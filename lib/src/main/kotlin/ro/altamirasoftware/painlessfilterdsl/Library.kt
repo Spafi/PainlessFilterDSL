@@ -1,4 +1,4 @@
-package painlessfilterdsl
+package ro.altamirasoftware.painlessfilterdsl
 
 class Library {
     fun someLibraryMethod(): Boolean {
