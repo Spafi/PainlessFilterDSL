@@ -28,7 +28,7 @@ import ro.altamirasoftware.painlessfilterdsl.interfaces.IEntityFilterAndSortPage
  *                    operation = ro.altamirasoftware.painlessfilterdsl.core.FilterOperation.NOT_IN_LIST,
  *                    values = incompatibleIdsList.map { it.getValue() }
  *               )
- *    val entityFilters = EntityFilterAndSortPageRequest(query.request, ProductEntity::class.java, ProductDto.Companion::mapTo)
+ *    val entityFilters = EntityFilterAndSortPageRequest(query.request, ro.altamirasoftware.example.entities.ProductEntity::class.java, ro.altamirasoftware.example.ProductDto.Companion::mapTo)
  *    val processedFilters = FilteringService.validateAndAddOptionalFilters(entityFilters, excludeProductIds)
  *
  */

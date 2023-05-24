@@ -1,3 +1,16 @@
+buildscript {
+    ext {
+        kotlinVersion = "1.6.0"
+    }
+
+    dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-noarg:$kotlinVersion")
+        classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+    }
+}
+
+
+
 plugins {
 
     id "org.jetbrains.kotlin.jvm" version "1.8.10"
@@ -12,12 +25,30 @@ plugins {
 apply plugin: 'java'
 apply plugin: 'kotlin-spring'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-allopen'
+apply plugin: "kotlin-noarg"
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
+allOpen {
+    annotations(
+            "javax.persistence.Embeddable",
+            "javax.persistence.MappedSuperclass",
+            "javax.persistence.Entity"
+    )
+}
+
+noArg {
+    annotations(
+            "javax.persistence.Embeddable",
+            "javax.persistence.MappedSuperclass",
+            "javax.persistence.Entity"
+    )
+}
 
 group = "ro.altamirasoftware"
 version = "0.0.1"
+
 
 
 repositories {
@@ -34,6 +65,14 @@ dependencies {
     implementation 'com.querydsl:querydsl-jpa:5.0.0'
     implementation 'org.jetbrains.kotlin:kotlin-reflect'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.1.0'
+
+
+
+    runtimeOnly 'org.postgresql:postgresql'
+
+    kapt 'com.querydsl:querydsl-apt:5.0.0:jpa'
+
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

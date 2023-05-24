@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/demo
+    username: postgres
+    password: q
+    driver-class-name: org.postgresql.Driver
+    generate-unique-name: true
+    hikari:
+      maximumPoolSize: 5
+      idleTimeout: 120000
+  main:
+    banner-mode: "off"
+  jpa:
+    generate-ddl: true
+    defer-datasource-initialization: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQL9Dialect
+        default_schema: ${DB_SCHEMA}
+        generate_statistics: true

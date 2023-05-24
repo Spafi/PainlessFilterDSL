@@ -6,3 +6,4 @@ data class FilteredSortedPageRequestDto(
     val page: Int,
     val size: Int
 )
+
